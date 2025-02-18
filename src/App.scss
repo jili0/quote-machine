@@ -1,3 +1,4 @@
+@use "sass:color";
 $primary-color: rgb(115, 168, 87);
 $secondary-color: antiquewhite;
 
@@ -61,10 +62,10 @@ body {
       height: 100%;
       width: 100%;
       &:hover {
-        fill: darken($primary-color, 10%);
+        fill: color.adjust($primary-color, $lightness: -10%);
       }
       &:active {
-        fill: darken($primary-color, 20%);
+        fill: color.adjust($primary-color, $lightness: -20%);
       }
     }
   }
@@ -76,10 +77,10 @@ body {
     height: 45px;
     border-radius: 4px;
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: color.adjust($primary-color, $lightness: -10%);
     }
     &:active {
-      background-color: darken($primary-color, 20%);
+      background-color: color.adjust($primary-color, $lightness: -20%);
     }
   }
 }
