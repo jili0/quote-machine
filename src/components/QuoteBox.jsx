@@ -3,11 +3,17 @@ import { QuotesContext } from "../contexts/QuotesContext";
 
 const QuoteBox = () => {
   const { quotes, setQuotes } = useContext(QuotesContext);
-  const initioalRandomQuote =
-    (localStorage.getItem("randomQuote") &&
-      JSON.parse(localStorage.getItem("randomQuote"))) ||
-    {};
-  const [randomQuote, setRandomQuote] = useState(initioalRandomQuote);
+  const initialRandomQuote = (() => {
+    try {
+      const storedQuote = localStorage.getItem("randomQuote");
+      return storedQuote ? JSON.parse(storedQuote) : {};
+    } catch (error) {
+      console.error("Error parsing JSON from localStorage:", error);
+      return {};
+    }
+  })();
+  
+  const [randomQuote, setRandomQuote] = useState(initialRandomQuote);
   const fetchQuotes = async () => {
     try {
       const response = await fetch("https://dummyjson.com/quotes");
