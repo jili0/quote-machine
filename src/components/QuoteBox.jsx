@@ -3,9 +3,11 @@ import { QuotesContext } from "../contexts/QuotesContext";
 
 const QuoteBox = () => {
   const { quotes, setQuotes } = useContext(QuotesContext);
-  const [randomQuote, setRandomQuote] = useState(
-    JSON.parse(localStorage.getItem("randomQuote")) || {}
-  );
+  const initioalRandomQuote =
+    (localStorage.getItem("randomQuote") &&
+      JSON.parse(localStorage.getItem("randomQuote"))) ||
+    {};
+  const [randomQuote, setRandomQuote] = useState(initioalRandomQuote);
   const fetchQuotes = async () => {
     try {
       const response = await fetch("https://dummyjson.com/quotes");
