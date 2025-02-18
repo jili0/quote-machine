@@ -1,0 +1,85 @@
+$primary-color: rgb(115, 168, 87);
+$secondary-color: antiquewhite;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $primary-color;
+  display: grid;
+  place-content: center;
+}
+
+body {
+  min-height: 50vw;
+  width: 70vw;
+  max-width: 800px;
+  max-height: 600px;
+  background-color: $secondary-color;
+  margin-top: 50%;
+  display: grid;
+  place-content: center;
+  border-radius: 5px;
+  padding: 1rem;
+  color: $primary-color;
+}
+
+.text {
+  line-height: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  &:before {
+    content: '"';
+  }
+  &:after {
+    content: '"';
+  }
+}
+
+.author {
+  text-align: right;
+  margin-bottom: 1rem;
+  &:before {
+    content: "-";
+  }
+}
+
+.clickables {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    width: 45px;
+    display: grid;
+    place-content: center;
+    svg {
+      fill: $primary-color;
+      height: 100%;
+      width: 100%;
+      &:hover {
+        fill: darken($primary-color, 10%);
+      }
+      &:active {
+        fill: darken($primary-color, 20%);
+      }
+    }
+  }
+  .new-quote {
+    border: none;
+    background-color: $primary-color;
+    color: $secondary-color;
+    padding: 4px;
+    height: 45px;
+    border-radius: 4px;
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+    &:active {
+      background-color: darken($primary-color, 20%);
+    }
+  }
+}
