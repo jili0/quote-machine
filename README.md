@@ -1,6 +1,23 @@
 # Random Quote Machine
 
 A simple React application that displays random quotes fetched from an external API. Users can generate new random quotes and share them on Twitter.
+<br><br>
+
+## App Preview
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="app-preview/preview1.png" alt="Random Quote Machine Preview" width="400" height="430"/>
+      </td>
+      <td align="center">
+        <img src="app-preview/preview2.png" alt="Random Quote Machine Preview" width="400" height="430"/>
+      </td>
+    </tr>
+  </table>
+</div>
+<br><br>
 
 ## Features
 
@@ -8,6 +25,7 @@ A simple React application that displays random quotes fetched from an external 
 - Generates new random quotes with a button click
 - Allows sharing quotes on Twitter
 - Persists quotes and the current random quote in local storage
+<br><br>
 
 ## Technologies Used
 
@@ -16,29 +34,32 @@ A simple React application that displays random quotes fetched from an external 
 - Sass for styling
 - Vite as the build tool
 - localStorage for data persistence
+<br><br>
 
 ## Project Structure
 
 ```
+├── app-preview/
+│   ├── preview1.png
+│   └── preview2.png
+├── node_modules/
 ├── public/
-│   └── vite.svg
 ├── src/
 │   ├── assets/
-│   │   └── react.svg
 │   ├── components/
-│   │   └── QuoteBox.jsx
 │   ├── contexts/
-│   │   └── QuotesContext.jsx
 │   ├── App.jsx
 │   ├── App.scss
 │   └── main.jsx
 ├── .gitignore
 ├── eslint.config.js
 ├── index.html
+├── package-lock.json
 ├── package.json
 ├── README.md
 └── vite.config.js
 ```
+<br>
 
 ## How It Works
 
@@ -47,6 +68,7 @@ A simple React application that displays random quotes fetched from an external 
 3. A random quote is selected and displayed in the QuoteBox component
 4. When the "New Quote" button is clicked, a new random quote is selected and displayed
 5. The "Tweet" button allows sharing the current quote on Twitter
+<br><br>
 
 ## User Stories
 
@@ -62,6 +84,7 @@ This project fulfills the following user stories:
 8. When the #new-quote button is clicked, the app fetches a new quote
 9. When the #new-quote button is clicked, the app updates the author
 10. Users can tweet the current quote by clicking on the #tweet-quote element
+<br><br>
 
 ## Styling
 
@@ -70,10 +93,7 @@ The app uses Sass for styling with:
 - Responsive design that works well on various screen sizes
 - Clean, centered layout with appropriate spacing
 - Interactive buttons with hover and active states
-
-## License
-
-MIT
+<br><br>
 
 ## Acknowledgments
 
