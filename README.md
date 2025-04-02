@@ -1,22 +1,82 @@
-User Story #1: I can see a wrapper element with a corresponding id="quote-box".
+# Random Quote Machine
 
-User Story #2: Within #quote-box, I can see an element with a corresponding id="text".
+A simple React application that displays random quotes fetched from an external API. Users can generate new random quotes and share them on Twitter.
 
-User Story #3: Within #quote-box, I can see an element with a corresponding id="author".
+## Features
 
-User Story #4: Within #quote-box, I can see a clickable element with a corresponding id="new-quote".
+- Displays random quotes with their authors
+- Generates new random quotes with a button click
+- Allows sharing quotes on Twitter
+- Persists quotes and the current random quote in local storage
 
-User Story #5: Within #quote-box, I can see a clickable a element with a corresponding id="tweet-quote".
+## Technologies Used
 
-User Story #6: On first load, my quote machine displays a random quote in the element with id="text".
+- React 17
+- Context API for state management
+- Sass for styling
+- Vite as the build tool
+- localStorage for data persistence
 
-User Story #7: On first load, my quote machine displays the random quote's author in the element with id="author".
+## Project Structure
 
-User Story #8: When the #new-quote button is clicked, my quote machine should fetch a new quote and display it in the #text element.
+```
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   └── react.svg
+│   ├── components/
+│   │   └── QuoteBox.jsx
+│   ├── contexts/
+│   │   └── QuotesContext.jsx
+│   ├── App.jsx
+│   ├── App.scss
+│   └── main.jsx
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── README.md
+└── vite.config.js
+```
 
-User Story #9: My quote machine should fetch the new quote's author when the #new-quote button is clicked and display it in the #author element.
+## How It Works
 
-User Story #10: I can tweet the current quote by clicking on the #tweet-quote a element. This a element should include the "twitter.com/intent/tweet" path in its href attribute to tweet the current quote.
+1. The app fetches quotes from the [DummyJSON API](https://dummyjson.com/quotes)
+2. Quotes are stored in the React Context API and persisted in localStorage
+3. A random quote is selected and displayed in the QuoteBox component
+4. When the "New Quote" button is clicked, a new random quote is selected and displayed
+5. The "Tweet" button allows sharing the current quote on Twitter
 
-User Story #11: The #quote-box wrapper element should be horizontally centered. Please run tests with browser's zoom level at 100% and page maximized.
+## User Stories
 
+This project fulfills the following user stories:
+
+1. Users can see a wrapper element with id "quote-box"
+2. Within #quote-box, there's an element with id "text" that displays the quote
+3. Within #quote-box, there's an element with id "author" that displays the author
+4. Within #quote-box, there's a clickable element with id "new-quote" to get a new quote
+5. Within #quote-box, there's a clickable anchor element with id "tweet-quote" for tweeting the quote
+6. On first load, the app displays a random quote in the #text element
+7. On first load, the app displays the random quote's author in the #author element
+8. When the #new-quote button is clicked, the app fetches a new quote
+9. When the #new-quote button is clicked, the app updates the author
+10. Users can tweet the current quote by clicking on the #tweet-quote element
+
+## Styling
+
+The app uses Sass for styling with:
+- A green primary color theme (#73A857)
+- Responsive design that works well on various screen sizes
+- Clean, centered layout with appropriate spacing
+- Interactive buttons with hover and active states
+
+## License
+
+MIT
+
+## Acknowledgments
+
+- [DummyJSON](https://dummyjson.com/) for providing the quotes API
+- [Font Awesome](https://fontawesome.com/) for the Twitter icon
+- [FreeCodeCamp](https://www.freecodecamp.org/) for the project requirements and testing suite
