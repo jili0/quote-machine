@@ -1,86 +1,192 @@
 @use "sass:color";
-$primary-color: rgb(115, 168, 87);
-$secondary-color: antiquewhite;
 
+// Color variables
+$primary-color: #73A857;
+$secondary-color: #FAEBD7; // antiquewhite
+$text-color: #333;
+$shadow-color: rgba(0, 0, 0, 0.2);
+$quote-symbol-color: rgba($primary-color, 0.2);
+
+// Mixins
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+  transition: $property $duration $timing;
+}
+
+@mixin button-style($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  @include transition;
+  
+  &:hover {
+    background-color: color.adjust($bg-color, $lightness: -10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px $shadow-color;
+  }
+  
+  &:active {
+    background-color: color.adjust($bg-color, $lightness: -20%);
+    transform: translateY(0);
+    box-shadow: 0 2px 4px $shadow-color;
+  }
+}
+
+// Reset
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+// Base styles
 html {
   background-color: $primary-color;
-  display: grid;
-  place-content: center;
+  background-image: linear-gradient(135deg, color.adjust($primary-color, $lightness: 5%) 0%, color.adjust($primary-color, $lightness: -10%) 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  min-height: 50vw;
-  width: 70vw;
-  max-width: 800px;
-  max-height: 600px;
+  width: 600px;
+  max-width: 90vw;
   background-color: $secondary-color;
-  margin-top: 10%;
-  display: grid;
-  place-content: center;
-  border-radius: 5px;
-  padding: 1rem;
-  color: $primary-color;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px $shadow-color;
+  padding: 2.5rem;
+  color: $text-color;
+  position: relative;
+  overflow: hidden;
 }
 
+// Quote box
+#quote-box {
+  position: relative;
+  z-index: 1;
+}
+
+// Quote text
 .text {
-  line-height: 2rem;
-  font-size: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.75rem;
   text-align: center;
-  margin-bottom: 1rem;
-  &:before {
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: $text-color;
+  position: relative;
+  
+  &:before, &:after {
     content: '"';
+    font-size: 4rem;
+    color: $quote-symbol-color;
+    position: absolute;
+    line-height: 1;
   }
+  
+  &:before {
+    top: -1rem;
+    left: -1rem;
+  }
+  
   &:after {
     content: '"';
+    bottom: -2rem;
+    right: -1rem;
   }
 }
 
+// Author
 .author {
   text-align: right;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: color.adjust($text-color, $lightness: 20%);
+  
   &:before {
-    content: "-";
+    content: "— ";
   }
 }
 
+// Buttons area
 .clickables {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid color.adjust($secondary-color, $lightness: -10%);
+  
   a {
     width: 45px;
-    display: grid;
-    place-content: center;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: color.adjust($primary-color, $lightness: 10%);
+    @include transition;
+    
+    &:hover {
+      background-color: $primary-color;
+      transform: scale(1.1);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+    
     svg {
-      fill: $primary-color;
-      height: 100%;
-      width: 100%;
-      &:hover {
-        fill: color.adjust($primary-color, $lightness: -10%);
-      }
-      &:active {
-        fill: color.adjust($primary-color, $lightness: -20%);
-      }
+      fill: white;
+      height: 24px;
+      width: 24px;
     }
   }
+  
   .new-quote {
-    border: none;
-    background-color: $primary-color;
-    color: $secondary-color;
-    padding: 4px;
+    @include button-style($primary-color, white);
+    font-size: 1rem;
     height: 45px;
-    border-radius: 4px;
-    &:hover {
-      background-color: color.adjust($primary-color, $lightness: -10%);
+    min-width: 120px;
+  }
+}
+
+// Animation for quote transitions
+.quote-box {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  body {
+    padding: 1.5rem;
+  }
+  
+  .text {
+    font-size: 1.4rem;
+    
+    &:before, &:after {
+      font-size: 3rem;
     }
-    &:active {
-      background-color: color.adjust($primary-color, $lightness: -20%);
-    }
+  }
+  
+  .author {
+    font-size: 1.1rem;
   }
 }
